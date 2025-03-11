@@ -626,7 +626,9 @@ case mailer_adapter do
       no_mx_lookups: get_bool_from_path_or_env(config_dir, "SMTP_MX_LOOKUPS_ENABLED", true)
 
   "Bamboo.Mua" ->
-    config :plausible, Plausible.Mailer, adapter: Bamboo.Mua
+    config :plausible, Plausible.Mailer, 
+      adapter: Bamboo.Mua,
+      ssl: [verify: :verify_none]
 
     # prevents common problems with Erlang's TLS v1.3
     middlebox_comp_mode =
